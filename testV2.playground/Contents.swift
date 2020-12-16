@@ -85,14 +85,33 @@ var randomCocktail = cocktailPrices.keys.randomElement() ?? .sangriaPunch
 //if randomCocktail == nil {
 //    randomCocktail = .sangriaPunch
 //}
-let client = (CocktailName.cranberrySparkler, Double(13))
+let client = (CocktailName.cranberrySparkler, Double(1))
     
-    switch cocktailPrices {
-    case _ where client.0 == cocktailPrices[.cranberrySparkler] :
-        print(1)
+
+
+for (cocktail1, price) in cocktailPrices {
+    switch cocktail1 {
+    case _ where client.0 == cocktail1 :
+        if client.1 >= price {
+            print("Keep your \(cocktail1)")
+        } else {
+            print("Need more gold, choose something else")
+        }
+//    case _ where client.0 == cocktail1 && client.1 < price :
+//        print(cocktail1)
+        
     default:
-        <#code#>
+        print()
     }
+}
+
+
+//    switch cocktailPrices {
+//    case _ where client.0 == cocktailPrices[.cranberrySparkler] :
+//        print(1)
+//    default:
+//        <#code#>
+//    }
 
 
 
