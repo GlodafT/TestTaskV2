@@ -85,16 +85,14 @@ var randomCocktail = cocktailPrices.keys.randomElement() ?? .sangriaPunch
 //if randomCocktail == nil {
 //    randomCocktail = .sangriaPunch
 //}
-let client = (cocktailPrices[.cranberrySparkler], Double(13))
+let client = (CocktailName.cranberrySparkler, Double(13))
     
-//for clientsCocktail in cocktailPrices {
-//    switch clientsCocktail {
-//    case _ where client.0 == clientsCocktail.key :
-//        <#code#>
-//    default:
-//        <#code#>
-//    }
-//}
+    switch cocktailPrices {
+    case _ where client.0 == cocktailPrices[.cranberrySparkler] :
+        print(1)
+    default:
+        <#code#>
+    }
 
 
 
