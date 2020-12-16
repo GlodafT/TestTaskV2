@@ -26,6 +26,7 @@ import UIKit
 //Добавление значений в словарь происходит в цикле. Также, как и вычисление стоимости коктейля).
 //Выведите элементы словаря в консоль в формате: "Цена за имяКоктейля - n".
 //Посчитайте среднюю сумму коктейля в коктейльной карте (сумма за каждый коктейль, делённая на количество коктейлей)
+
 //Создайте случайное имя коктейля. Если не удалось, то установите дефолтный коктейль - sangriaPunch
 //Создайте тьюпл client с 2 аргументами:
 //имя коктейля, который он хочет заказать
@@ -53,27 +54,47 @@ enum Ingridients: Double {
 }
 
 var cocktails: [CocktailName: [Ingridients]] = [.orangeMojito: [.orange, .mint, .lime, .spakrlingWater],
-                                                .cranberrySparkler: [.cranberry, .spakrlingWater, .lime, .orange], .pinkLemonade: [.lemon, .orange, .raspberry, .mint, .coldWater], .sangriaPunch: [.nonAlchocolRedWine, .orange, .lemon, .lime, .coldWater]
-]
+                                                .cranberrySparkler: [.cranberry, .spakrlingWater, .lime, .orange], .pinkLemonade: [.lemon, .orange, .raspberry, .mint, .coldWater], .sangriaPunch: [.nonAlchocolRedWine, .orange, .lemon, .lime, .coldWater]]
 
 
 var cocktailPrices: [CocktailName: Double] = [:]
 
-for (coctail, ingridients) in cocktails {
-    for price in ingridients {
-        let priceOfIngridients = price.rawValue
-        print(priceOfIngridients)
-    }
-    
+var summOfCocktails: Double = 0
+var everageOfCocktails: Double = 0
 
+
+for (coctail, ingridients) in cocktails {
+//    print()
+    var priceOfIngridients: Double = 0
+    for price in ingridients {
+         priceOfIngridients += price.rawValue
+    
+    }
+//    print(priceOfIngridients)
+    cocktailPrices.updateValue(priceOfIngridients, forKey: coctail)
 }
 
+for PrintPriceOfCockteils in cocktailPrices {
+    print("Price of cocktail \(PrintPriceOfCockteils.key) - \(PrintPriceOfCockteils.value)")
+    summOfCocktails += PrintPriceOfCockteils.value
+    everageOfCocktails = summOfCocktails / Double(cocktailPrices.count)
+}
 
-
-
-
-
-
+//print(everageOfCocktails)
+var randomCocktail = cocktailPrices.keys.randomElement() ?? .sangriaPunch
+//if randomCocktail == nil {
+//    randomCocktail = .sangriaPunch
+//}
+let client = (cocktailPrices[.cranberrySparkler], Double(13))
+    
+//for clientsCocktail in cocktailPrices {
+//    switch clientsCocktail {
+//    case _ where client.0 == clientsCocktail.key :
+//        <#code#>
+//    default:
+//        <#code#>
+//    }
+//}
 
 
 
